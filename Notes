@@ -1,0 +1,12 @@
+We'll use the same User Class for attendees, staff, and organizers. We would have
+use the concept of polymorphism by overriding each class for each type but that would be complex
+for our use case.
+
+     fetch = FetchType.LAZY:
+     This specifies the fetching strategy for the associated User entity. FetchType.LAZY means
+     that the User object (organizer) will only be loaded from the database when it is explicitly
+     accessed for the first time. This is the recommended approach for performance optimization, as it avoids
+     loading unnecessary data when the organizer might not be needed in a particular operation
+
+User and Event Entites are important to understand the schema things
+
