@@ -8,5 +8,12 @@ for our use case.
      accessed for the first time. This is the recommended approach for performance optimization, as it avoids
      loading unnecessary data when the organizer might not be needed in a particular operation
 
-User and Event Entites are important to understand the schema things
+User and Event Entites are important to understand the schema things.
 
+//    A servlet in Java is a server-side component written in the Java
+//    programming language that extends the capabilities of a server,
+//    typically a web server. Servlets are a fundamental technology
+//    in Java web development, particularly for building dynamic web applications.
+Request-Response Model:
+They are designed to handle client requests (primarily HTTP requests from web browsers) and generate
+dynamic responses (like HTML, XML, or JSON) to send back to the client.
