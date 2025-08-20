@@ -1,4 +1,4 @@
-package com.arnav.event_ticket.domain;
+package com.arnav.event_ticket.domain.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

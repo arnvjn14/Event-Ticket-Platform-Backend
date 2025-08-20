@@ -1,6 +1,6 @@
 package com.arnav.event_ticket.filters;
 
-import com.arnav.event_ticket.domain.User;
+import com.arnav.event_ticket.domain.entities.User;
 import com.arnav.event_ticket.repositories.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
