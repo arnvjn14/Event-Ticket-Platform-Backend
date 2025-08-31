@@ -70,10 +70,10 @@ public class EventServiceImpl implements EventService {
         return Optional.empty();
     }
 
-    @Override
-    public Event updateEventForOrganizer(UUID organizerId, UUID id, UpdateEventRequest event) {
-        return null;
-    }
+//    @Override
+//    public Event updateEventForOrganizer(UUID organizerId, UUID id, UpdateEventRequest event) {
+//        return null;
+//    }
 
     @Override
     public void deleteEventForOrganizer(UUID organizerId, UUID id) {
