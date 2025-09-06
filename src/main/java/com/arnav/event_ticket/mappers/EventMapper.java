@@ -2,9 +2,7 @@ package com.arnav.event_ticket.mappers;
 
 import com.arnav.event_ticket.domain.CreateEventRequest;
 import com.arnav.event_ticket.domain.CreateTicketTypeRequest;
-import com.arnav.event_ticket.domain.dtos.CreateEventRequestDto;
-import com.arnav.event_ticket.domain.dtos.CreateEventResponseDto;
-import com.arnav.event_ticket.domain.dtos.CreateTicketTypeRequestDto;
+import com.arnav.event_ticket.domain.dtos.*;
 import com.arnav.event_ticket.domain.entities.Event;
 import com.arnav.event_ticket.domain.entities.TicketType;
 import org.mapstruct.Mapper;
@@ -19,15 +17,15 @@ public interface EventMapper {
 
     CreateEventResponseDto toDto(Event event);
 
-//    ListEventTicketTypeResponseDto toDto(TicketType ticketType);
-//
-//    ListEventResponseDto toListEventResponseDto(Event event);
-//
-//    GetEventDetailsTicketTypesResponseDto toGetEventDetailsTicketTypesResponseDto(
-//            TicketType ticketType);
-//
-//    GetEventDetailsResponseDto toGetEventDetailsResponseDto(Event event);
-//
+    ListEventTicketTypeResponseDto toDto(TicketType ticketType);
+
+    ListEventResponseDto toListEventResponseDto(Event event);
+
+    GetEventDetailsTicketTypesResponseDto toGetEventDetailsTicketTypesResponseDto(
+            TicketType ticketType);
+
+    GetEventDetailsResponseDto toGetEventDetailsResponseDto(Event event);
+
 //    UpdateTicketTypeRequest fromDto(UpdateTicketTypeRequestDto dto);
 //
 //    UpdateEventRequest fromDto(UpdateEventRequestDto dto);
