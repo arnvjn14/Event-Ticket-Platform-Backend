@@ -1,6 +1,9 @@
 package com.arnav.event_ticket.controllers;
 
 import com.arnav.event_ticket.domain.dtos.ErrorDto;
+import com.arnav.event_ticket.exceptions.EventNotFoundException;
+import com.arnav.event_ticket.exceptions.EventUpdateException;
+import com.arnav.event_ticket.exceptions.TicketTypeNotFoundException;
 import com.arnav.event_ticket.exceptions.UserNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import java.util.List;
@@ -50,31 +53,31 @@ public class GlobalExceptionHandler {
 //        errorDto.setError("Unable to generate QR Code");
 //        return new ResponseEntity<>(errorDto, HttpStatus.INTERNAL_SERVER_ERROR);
 //    }
-//
-//    @ExceptionHandler(EventUpdateException.class)
-//    public ResponseEntity<ErrorDto> handleEventUpdateException(EventUpdateException ex) {
-//        log.error("Caught EventUpdateException", ex);
-//        ErrorDto errorDto = new ErrorDto();
-//        errorDto.setError("Unable to update event");
-//        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
-//    }
-//
-//    @ExceptionHandler(TicketTypeNotFoundException.class)
-//    public ResponseEntity<ErrorDto> handleTicketTypeNotFoundException(
-//            TicketTypeNotFoundException ex) {
-//        log.error("Caught TicketTypeNotFoundException", ex);
-//        ErrorDto errorDto = new ErrorDto();
-//        errorDto.setError("Ticket type not found");
-//        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
-//    }
-//
-//    @ExceptionHandler(EventNotFoundException.class)
-//    public ResponseEntity<ErrorDto> handleEventNotFoundException(EventNotFoundException ex) {
-//        log.error("Caught EventNotFoundException", ex);
-//        ErrorDto errorDto = new ErrorDto();
-//        errorDto.setError("Event not found");
-//        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
-//    }
+
+    @ExceptionHandler(EventUpdateException.class)
+    public ResponseEntity<ErrorDto> handleEventUpdateException(EventUpdateException ex) {
+        log.error("Caught EventUpdateException", ex);
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setError("Unable to update event");
+        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(TicketTypeNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleTicketTypeNotFoundException(
+            TicketTypeNotFoundException ex) {
+        log.error("Caught TicketTypeNotFoundException", ex);
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setError("Ticket type not found");
+        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(EventNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleEventNotFoundException(EventNotFoundException ex) {
+        log.error("Caught EventNotFoundException", ex);
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setError("Event not found");
+        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorDto> handleUserNotFoundException(UserNotFoundException ex) {
