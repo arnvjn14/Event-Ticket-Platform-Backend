@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.arnav.event_ticket.domain.CreateEventRequest;
+import com.arnav.event_ticket.domain.UpdateEventRequest;
 import com.arnav.event_ticket.domain.entities.Event;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,7 +17,7 @@ public interface EventService {
 
     Optional<Event> getEventForOrganizer(UUID organizerId, UUID id);
 
-//    Event updateEventForOrganizer(UUID organizerId, UUID id, UpdateEventRequest event);
+    Event updateEventForOrganizer(UUID organizerId, UUID id, UpdateEventRequest event);
 
     void deleteEventForOrganizer(UUID organizerId, UUID id);
 

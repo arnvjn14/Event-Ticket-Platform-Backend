@@ -1,10 +1,8 @@
 package com.arnav.event_ticket.controllers;
 
 import com.arnav.event_ticket.domain.CreateEventRequest;
-import com.arnav.event_ticket.domain.dtos.CreateEventRequestDto;
-import com.arnav.event_ticket.domain.dtos.CreateEventResponseDto;
-import com.arnav.event_ticket.domain.dtos.GetEventDetailsResponseDto;
-import com.arnav.event_ticket.domain.dtos.ListEventResponseDto;
+import com.arnav.event_ticket.domain.UpdateEventRequest;
+import com.arnav.event_ticket.domain.dtos.*;
 import com.arnav.event_ticket.domain.entities.Event;
 import com.arnav.event_ticket.mappers.EventMapper;
 import com.arnav.event_ticket.services.EventService;
@@ -54,24 +52,24 @@ public class EventController {
         return ResponseEntity.ok("Public API is working fine 🚀");
     }
 
-//    @PutMapping(path = "/{eventId}")
-//    public ResponseEntity<UpdateEventResponseDto> updateEvent(
-//            @AuthenticationPrincipal Jwt jwt,
-//            @PathVariable UUID eventId,
-//            @Valid @RequestBody UpdateEventRequestDto updateEventRequestDto) {
-//        UpdateEventRequest updateEventRequest = eventMapper.fromDto(updateEventRequestDto);
+    @PutMapping(path = "/{eventId}")
+    public ResponseEntity<UpdateEventResponseDto> updateEvent(
+            @AuthenticationPrincipal Jwt jwt,
+            @PathVariable UUID eventId,
+            @Valid @RequestBody UpdateEventRequestDto updateEventRequestDto) {
+        UpdateEventRequest updateEventRequest = eventMapper.fromDto(updateEventRequestDto);
 //        UUID userId = parseUserId(jwt);
-//
-//        Event updatedEvent = eventService.updateEventForOrganizer(
-//                userId, eventId, updateEventRequest
-//        );
-//
-//        UpdateEventResponseDto updateEventResponseDto = eventMapper.toUpdateEventResponseDto(
-//                updatedEvent);
-//
-//        return ResponseEntity.ok(updateEventResponseDto);
-//    }
-//
+        UUID userId= UUID.fromString(jwt.getSubject());
+        Event updatedEvent = eventService.updateEventForOrganizer(
+                userId, eventId, updateEventRequest
+        );
+
+        UpdateEventResponseDto updateEventResponseDto = eventMapper.toUpdateEventResponseDto(
+                updatedEvent);
+
+        return ResponseEntity.ok(updateEventResponseDto);
+    }
+
     @GetMapping
     public ResponseEntity<Page<ListEventResponseDto>> listEvents(
             @AuthenticationPrincipal Jwt jwt, Pageable pageable
