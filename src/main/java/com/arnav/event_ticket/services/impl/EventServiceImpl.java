@@ -4,6 +4,7 @@ import com.arnav.event_ticket.domain.CreateEventRequest;
 import com.arnav.event_ticket.domain.UpdateEventRequest;
 import com.arnav.event_ticket.domain.UpdateTicketTypeRequest;
 import com.arnav.event_ticket.domain.entities.Event;
+import com.arnav.event_ticket.domain.entities.EventStatusEnum;
 import com.arnav.event_ticket.domain.entities.TicketType;
 import com.arnav.event_ticket.domain.entities.User;
 import com.arnav.event_ticket.exceptions.EventNotFoundException;
@@ -150,12 +151,12 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Page<Event> listPublishedEvents(Pageable pageable) {
-        return null;
+        return eventRepository.findByStatus(EventStatusEnum.PUBLISHED,(java.awt.print.Pageable) pageable);
     }
 
     @Override
     public Page<Event> searchPublishedEvents(String query, Pageable pageable) {
-        return null;
+        return eventRepository.searchEvents(query, pageable);
     }
 
     @Override
