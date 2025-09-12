@@ -94,15 +94,16 @@ public class EventController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-//
-//    @DeleteMapping(path = "/{eventId}")
-//    public ResponseEntity<Void> deleteEvent(
-//            @AuthenticationPrincipal Jwt jwt,
-//            @PathVariable UUID eventId
-//    ) {
+
+    @DeleteMapping(path = "/{eventId}")
+    public ResponseEntity<Void> deleteEvent(
+            @AuthenticationPrincipal Jwt jwt,
+            @PathVariable UUID eventId
+    ) {
 //        UUID userId = parseUserId(jwt);
-//        eventService.deleteEventForOrganizer(userId, eventId);
-//        return ResponseEntity.noContent().build();
-//    }
+        UUID userId= UUID.fromString(jwt.getSubject());
+        eventService.deleteEventForOrganizer(userId, eventId);
+        return ResponseEntity.noContent().build();
+    }
 }
 
