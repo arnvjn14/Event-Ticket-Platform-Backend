@@ -2,6 +2,7 @@ package com.arnav.event_ticket.controllers;
 
 import java.util.UUID;
 
+import com.arnav.event_ticket.domain.dtos.GetPublishedEventDetailsResponseDto;
 import com.arnav.event_ticket.domain.dtos.ListPublishedEventResponseDto;
 import com.arnav.event_ticket.domain.entities.Event;
 import com.arnav.event_ticket.mappers.EventMapper;
@@ -41,13 +42,13 @@ public class PublishedEventController {
         );
     }
 
-//    @GetMapping(path = "/{eventId}")
-//    public ResponseEntity<GetPublishedEventDetailsResponseDto> getPublishedEventDetails(
-//            @PathVariable UUID eventId
-//    ) {
-//        return eventService.getPublishedEvent(eventId)
-//                .map(eventMapper::toGetPublishedEventDetailsResponseDto)
-//                .map(ResponseEntity::ok)
-//                .orElse(ResponseEntity.notFound().build());
-//    }
+    @GetMapping(path = "/{eventId}")
+    public ResponseEntity<GetPublishedEventDetailsResponseDto> getPublishedEventDetails(
+            @PathVariable UUID eventId
+    ) {
+        return eventService.getPublishedEvent(eventId)
+                .map(eventMapper::toGetPublishedEventDetailsResponseDto)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

@@ -161,6 +161,6 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Optional<Event> getPublishedEvent(UUID id) {
-        return Optional.empty();
+        return eventRepository.findByIdAndStatus(id, EventStatusEnum.PUBLISHED);
     }
 }
