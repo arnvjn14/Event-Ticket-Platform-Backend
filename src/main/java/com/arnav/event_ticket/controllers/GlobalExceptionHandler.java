@@ -1,10 +1,7 @@
 package com.arnav.event_ticket.controllers;
 
 import com.arnav.event_ticket.domain.dtos.ErrorDto;
-import com.arnav.event_ticket.exceptions.EventNotFoundException;
-import com.arnav.event_ticket.exceptions.EventUpdateException;
-import com.arnav.event_ticket.exceptions.TicketTypeNotFoundException;
-import com.arnav.event_ticket.exceptions.UserNotFoundException;
+import com.arnav.event_ticket.exceptions.*;
 import jakarta.validation.ConstraintViolationException;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -29,30 +26,30 @@ public class GlobalExceptionHandler {
 //        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
 //    }
 //
-//
-//    @ExceptionHandler(TicketsSoldOutException.class)
-//    public ResponseEntity<ErrorDto> handleTicketsSoldOutException(TicketsSoldOutException ex) {
-//        log.error("Caught TicketsSoldOutException", ex);
-//        ErrorDto errorDto = new ErrorDto();
-//        errorDto.setError("Tickets are sold out for this ticket type");
-//        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
-//    }
-//
-//    @ExceptionHandler(QrCodeNotFoundException.class)
-//    public ResponseEntity<ErrorDto> handleQrCodeNotFoundException(QrCodeNotFoundException ex) {
-//        log.error("Caught QrCodeNotFoundException", ex);
-//        ErrorDto errorDto = new ErrorDto();
-//        errorDto.setError("QR code not found");
-//        return new ResponseEntity<>(errorDto, HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
-//
-//    @ExceptionHandler(QrCodeGenerationException.class)
-//    public ResponseEntity<ErrorDto> handleQrCodeGenerationException(QrCodeGenerationException ex) {
-//        log.error("Caught QrCodeGenerationException", ex);
-//        ErrorDto errorDto = new ErrorDto();
-//        errorDto.setError("Unable to generate QR Code");
-//        return new ResponseEntity<>(errorDto, HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
+
+    @ExceptionHandler(TicketsSoldOutException.class)
+    public ResponseEntity<ErrorDto> handleTicketsSoldOutException(TicketsSoldOutException ex) {
+        log.error("Caught TicketsSoldOutException", ex);
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setError("Tickets are sold out for this ticket type");
+        return new ResponseEntity<>(errorDto, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(QrCodeNotFoundException.class)
+    public ResponseEntity<ErrorDto> handleQrCodeNotFoundException(QrCodeNotFoundException ex) {
+        log.error("Caught QrCodeNotFoundException", ex);
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setError("QR code not found");
+        return new ResponseEntity<>(errorDto, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(QrCodeGenerationException.class)
+    public ResponseEntity<ErrorDto> handleQrCodeGenerationException(QrCodeGenerationException ex) {
+        log.error("Caught QrCodeGenerationException", ex);
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setError("Unable to generate QR Code");
+        return new ResponseEntity<>(errorDto, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
     @ExceptionHandler(EventUpdateException.class)
     public ResponseEntity<ErrorDto> handleEventUpdateException(EventUpdateException ex) {
